@@ -1,4 +1,5 @@
 # 2DRPG
+## About this project
 Creation of an aRPG (Action-Adventure Role Playing Game) using Unity 2D 2019.1.0f2 -- Will switch to 2019.x.xfx when it comes out.
 
 Note: 2019.1.0f2 has a bug with the palette editor so I have changed the project version to 2019.2.0a2
@@ -42,6 +43,7 @@ Current scope of project:
     - Copper
 
 #
+## How the game was created
 ### Using a Tileset to Create the Environment
 0. In order to use a Tileset, first either create one or find one online. 
 1. Once you've made/found one: in Unity, click on Windows > 2D > Tile Palette.
@@ -98,3 +100,48 @@ In order to set it up and use it:
 
 #
 ### Creating the Item System
+
+
+
+#
+## FAQ
+
+#### Question #1: 
+- How do I stop my character from sliding down slopes?
+
+    #### Answer
+    - This is the cause of the issue:
+
+    - This is how to fix the issue:
+
+#### Question #2: 
+- How do I setup a pixel perfect camera?
+
+    #### Answer
+    - This is the cause of the issue:
+
+    - This is how to fix the issue:
+
+#### Question #3: 
+- How do I smoothly camera follow a character?
+
+    #### Answer
+    - This is the cause of the issue:
+
+    - This is how to fix the issue:
+
+#### Question #4: 
+- How do I make the character keep jumping when holding down the jump button rather than tap it?
+
+    #### Answer
+    - This is the cause of the issue:
+
+    - This is how to fix the issue:
+
+#### Question #5: 
+- How 
+
+    #### Answer
+    - This is the cause of the issue:
+
+    - This is how to fix the issue:
