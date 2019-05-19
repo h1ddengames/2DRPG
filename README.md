@@ -5,14 +5,14 @@ Creation of an aRPG (Action-Adventure Role Playing Game) using Unity 2D 2019.1.0
 Note: 2019.1.0f2 has a bug with the palette editor so I have changed the project version to 2019.2.0a2
 
 Current scope of project:
-- Player movement
-    - Satisfying feel
-    - Satisfying animations
-    - Camera Follow
-- Platforming
-    - Satisfying feel
+- ~~Player movement~~
+    - ~~Satisfying feel~~
+    - ~~Satisfying animations~~
+    - ~~Camera Follow~~
+- ~~Platforming~~
+    - ~~Satisfying feel~~
     - Parallax background (Satisfying animations)
-- Stat system (STR, INT, DEX, LUK, HP, MP, EXP)
+- > Currently working on: Stat system (STR, INT, DEX, LUK, HP, MP, EXP)
 - Item system (Weapons, Armors, Use, Quest, Crafting)
     - Inventory
         - Item database (Local)
