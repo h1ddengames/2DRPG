@@ -13,6 +13,7 @@ Current scope of project:
     - ~~Satisfying feel~~
     - Parallax background (Satisfying animations)
 - > Currently working on: Stat system (STR, INT, DEX, LUK, HP, MP, EXP)
+    - > Create a UI to display stats
 - Item system (Weapons, Armors, Use, Quest, Crafting)
     - Inventory
         - Item database (Local)
@@ -127,8 +128,10 @@ In order to set it up and use it:
 
     #### Answer
     - This is the cause of the issue:
+    1. The camera is moving a different amount based on how long the last frame took to complete. 
 
     - This is how to fix the issue:
+    1. Make sure you multiply the movement of the camera by Time.deltatime in order to move the camera the same amount no matter how long the last frame took to render.
 
 #### Question #4: 
 - How do I make the character keep jumping when holding down the jump button rather than tap it?
@@ -139,9 +142,13 @@ In order to set it up and use it:
     - This is how to fix the issue:
 
 #### Question #5: 
-- How 
+- How do I fix a frame of animation disappearing?
 
     #### Answer
     - This is the cause of the issue:
+    1. Unknown at this time. 
 
     - This is how to fix the issue:
+    1. Go to the image for the frame that disappears, change the Pixels Per Unit to a high number (if your orignal was 16 then change it to something like 156) then change it back to the original number.
+    2. Sometimes you have to put two numbers you don't want as the Pixels Per Unit then the number you do want if step 1 doesn't fix it.
+    3. Sometimes even step 2 wont work, in that case: save and play the game for a couple seconds then try step 2 again. 
