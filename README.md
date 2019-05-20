@@ -146,9 +146,7 @@ In order to set it up and use it:
 
     #### Answer
     - This is the cause of the issue:
-    1. Unknown at this time. 
+    1. This is due to the sorting order of your sprites. Most likely your background and your current sprite is on the same sorting layer so it's fighting for control.  
 
     - This is how to fix the issue:
-    1. Go to the image for the frame that disappears, change the Pixels Per Unit to a high number (if your orignal was 16 then change it to something like 156) then change it back to the original number.
-    2. Sometimes you have to put two numbers you don't want as the Pixels Per Unit then the number you do want if step 1 doesn't fix it.
-    3. Sometimes even step 2 wont work, in that case: save and play the game for a couple seconds then try step 2 again. 
+    1. Change the sorting layer of forground objects to be higher than that of mid or background objects.
