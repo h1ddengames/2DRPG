@@ -12,7 +12,7 @@ Current scope of project:
 - ~~Platforming~~
     - ~~Satisfying feel~~
     - Parallax background (Satisfying animations)
-- > Currently working on: Stat system (STR, INT, DEX, LUK, HP, MP, EXP)
+- > Currently working on: Stat system (STR, INT, DEX, LUK, HP, MP, ATK, MATK, EXP)
     - > Create a UI to display stats
 - Item system (Weapons, Armors, Use, Quest, Crafting)
     - Inventory
@@ -112,41 +112,122 @@ In order to set it up and use it:
 
     #### Answer
     - This is the cause of the issue:
+    1. Physics will take place on every frame so in order to stop Physics from moving the character, the character's position must be frozen when no input is detected.
 
     - This is how to fix the issue:
+    1. In a movement script, check that the player is not moving the character.
+    2. If the player is not being moved then freeze the x position of the character:
+        ```
+        rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+        ```
+    3. Do not freeze the Y position or the character will freeze in midair when the player stops supplying input.
+    4. Once player input resumes we want to get rid of the freeze on the X position while still keeping the rotation of the character frozen by doing the following:
+        ```
+        rb.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
+        ```
 
 #### Question #2: 
 - How do I setup a pixel perfect camera?
 
     #### Answer
-    - This is the cause of the issue:
-
-    - This is how to fix the issue:
+    - This is how:
+    1. On the Main Camera in the scene, click Add Component.
+    2. Change the Assets Pixel Per Unit to the pixels per unit on your assets. Then turn on Run in Edit Mode.
+    3. Change the reference resolution until the camera preview shows as much of the area that you want for the game.
+    4. Turn off Run in Edit Mode when finished with the edits.
 
 #### Question #3: 
 - How do I smoothly camera follow a character?
 
     #### Answer
     - This is the cause of the issue:
-    1. The camera is moving a different amount based on how long the last frame took to complete. 
+    1. The camera is moving at a rate that is different from the PPU (Pixels Per Unit) of your 2D art assets. 
 
     - This is how to fix the issue:
-    1. Make sure you multiply the movement of the camera by Time.deltatime in order to move the camera the same amount no matter how long the last frame took to render.
+    
 
 #### Question #4: 
 - How do I make the character keep jumping when holding down the jump button rather than tap it?
 
     #### Answer
-    - This is the cause of the issue:
-
-    - This is how to fix the issue:
+    - This is how:
+    1. We want to allow the player to jump on the first available frame while they are still holding down the button. In order to do that, we will keep the character in a jumping state until we get the input that the player has let go of the jump button.
+        ```
+        if(Input.GetButtonDown("Jump")) {
+            jump = true;
+            animator.SetBool("IsJumping", true);
+        } else if (Input.GetButtonUp("Jump")) {
+            jump = false;
+            animator.SetBool("IsJumping", false);
+        }
+        ```
+    2. By doing it this way, we have to drop the jumpForce of the character down, otherwise it's almost as if the character is able to double or triple jump.
 
 #### Question #5: 
 - How do I fix a frame of animation disappearing?
 
     #### Answer
     - This is the cause of the issue:
-    1. This is due to the sorting order of your sprites. Most likely your background and your current sprite is on the same sorting layer so it's fighting for control.  
+    1. The sorting order of your sprites. Most likely your background and your current sprite is on the same sorting layer so it's fighting for control.  
 
     - This is how to fix the issue:
     1. Change the sorting layer of forground objects to be higher than that of mid or background objects.
+
+#### Question #6: 
+- How do I create a UI that scales with resolution?
+
+    #### Answer
+    - This is how:
+    1. Create a Canvas and make sure there is an EventSystem in the scene.
+    2. Go to the Canvas Scaler component then select Scale with Screen Size.
+    3. Whenever you make any UI element on the Canvas, make sure that you "dock" the UI element to a location on the screen.
+    4. Test that everything scales properly by going to your Gamme tab, then changing the resolution.
+
+#### Question #7: 
+- Question
+
+    #### Answer
+    - This is the cause of the issue:
+
+    - This is how to fix the issue:
+
+
+#### Question #8: 
+- Question
+
+    #### Answer
+    - This is the cause of the issue:
+
+    - This is how to fix the issue:
+
+#### Question #9: 
+- Question
+
+    #### Answer
+    - This is the cause of the issue:
+
+    - This is how to fix the issue:
+
+#### Question #10: 
+- Question
+
+    #### Answer
+    - This is the cause of the issue:
+
+    - This is how to fix the issue:
+
+#### Question #11: 
+- Question
+
+    #### Answer
+    - This is the cause of the issue:
+
+    - This is how to fix the issue:
+
+#### Question #12: 
+- Question
+
+    #### Answer
+    - This is the cause of the issue:
+
+    - This is how to fix the issue:
