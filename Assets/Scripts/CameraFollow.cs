@@ -29,6 +29,6 @@ public class CameraFollow : MonoBehaviour
         // Camera follow on the X axis, camera follow on the Y axis, no z movement.
         Vector3 targetPosition = new Vector3(Mathf.Clamp(target.position.x, minLocationX, maxLocationX), Mathf.Clamp(target.position.y, minLocationY, maxLocationY), 0) + offset;
         // Smoothly move the camera from current position to the targetPosition.
-        transform.position = Vector3.SmoothDamp(transform.position * Time.deltaTime, targetPosition, ref velocity, smoothTime);
+        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
     }
 }

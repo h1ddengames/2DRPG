@@ -1,0 +1,14 @@
+{
+    "git.ignoreLimitWarning": true,
+    "files.exclude": {
+        "**/.vs": true,
+        "**/.vscode": true,
+        "**/[Bb]uilds": true,
+        "**/[Ll]ibrary": true,
+        "**/[Ll]ogs": true,
+        "**/[Oo]bj": true,
+        "**/[Pp]ackages": true,
+        "**/[Tt]emp": true,
+        "**/*.meta": true
+    }
+}
