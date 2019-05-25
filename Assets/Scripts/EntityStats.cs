@@ -4,6 +4,10 @@ namespace h1ddengames.twodrpg.statistics
 
     public class EntityStats : MonoBehaviour {
         [SerializeField] private readonly Stats entityStats;
+        [SerializeField] private int currentHealthPoints;
+        [SerializeField] private int maxHealthPoints; 
+        [SerializeField] private int currentManaPoints;
+        [SerializeField] private int maxManaPoints;
         
 
     }

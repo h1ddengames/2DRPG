@@ -19,8 +19,12 @@ namespace h1ddengames.twodrpg.ui
         public TextMeshProUGUI Text { get => text; set => text = value; }
 
         private void OnValidate() {
-            Fill.fillAmount = FillAmount;
-            Text.text = ValueText;
+            if(Fill != null) {
+                Fill.fillAmount = FillAmount;
+            }
+            if(Text != null) {
+                Text.text = ValueText;
+            }
         }
     }
 }

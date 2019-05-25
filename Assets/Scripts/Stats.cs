@@ -15,7 +15,7 @@ namespace h1ddengames.twodrpg.statistics
            [SerializeField] private int magicAttackPoints;
            [SerializeField] private int experience;
 
-           public int Strength { get => strength; set => strength = value; }
+            public int Strength { get => strength; set => strength = value; }
             public int Intelligence { get => intelligence; set => intelligence = value; }
             public int Dexterity { get => dexterity; set => dexterity = value; }
             public int Luck { get => luck; set => luck = value; }
