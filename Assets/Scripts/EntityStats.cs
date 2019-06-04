@@ -1,4 +1,4 @@
-namespace h1ddengames.twodrpg.statistics
+﻿namespace h1ddengames.twodrpg.statistics
 {
     using UnityEngine;
     using UnityEditor;
@@ -9,7 +9,11 @@ namespace h1ddengames.twodrpg.statistics
 
     public class EntityStats : MonoBehaviour {
         #region Variables
+        public delegate void EntityStatDelegate();
+        public static event EntityStatDelegate entityStatsHaveChangedEvent;
+        
         [Reorderable, SerializeField] private StatsList _listOfStats;
+        [Reorderable, SerializeField] private StatsListSO _listOfStatsSO;
         [SerializeField] private int _strength, _intelligence, _dexterity, _luck;
         [SerializeField] private int _currentHealthPoints, _maxHealthPoints, _currentManaPoints, _maxManaPoints;
         [SerializeField] private int _attackPoints, _magicAttackPoints;    
@@ -19,10 +23,53 @@ namespace h1ddengames.twodrpg.statistics
 
         #region Getters and Setters
         public StatsList ListOfStats { get => _listOfStats; set => _listOfStats = value; }
-        public int CurrentHealthPoints { get => _currentHealthPoints; set => _currentHealthPoints = value; }
-        public int MaxHealthPoints { get => _maxHealthPoints; set => _maxHealthPoints = value; }
-        public int CurrentManaPoints { get => _currentManaPoints; set => _currentManaPoints = value; }
-        public int MaxManaPoints { get => _maxManaPoints; set => _maxManaPoints = value; }
+        public StatsListSO ListOfStatsSO { get => _listOfStatsSO; set => _listOfStatsSO = value; }
+        public int CurrentHealthPoints { 
+            get => _currentHealthPoints; 
+            set {
+                if(value < Stats.MAX_NUMBER_ALLOWABLE && value != _currentHealthPoints) { 
+                    _currentHealthPoints = value;
+                    if(_currentHealthPoints > _maxHealthPoints) {
+                        MaxHealthPoints = _currentHealthPoints;
+                    }
+                    if(entityStatsHaveChangedEvent != null) entityStatsHaveChangedEvent(); 
+                } else { return; }
+            } 
+        }
+
+        public int MaxHealthPoints { 
+            get => _maxHealthPoints; 
+            set {
+                if(value < Stats.MAX_NUMBER_ALLOWABLE && value != _maxHealthPoints) { 
+                    _maxHealthPoints = value;
+                    if(entityStatsHaveChangedEvent != null) entityStatsHaveChangedEvent(); 
+                } else { return; }
+            }  
+        }
+
+        public int CurrentManaPoints { 
+            get => _currentManaPoints; 
+            set {
+                if(value < Stats.MAX_NUMBER_ALLOWABLE && value != _currentManaPoints) { 
+                    _currentManaPoints = value;
+                    if(_currentManaPoints > _maxManaPoints) {
+                        MaxManaPoints = _currentManaPoints;
+                    }
+                    if(entityStatsHaveChangedEvent != null) entityStatsHaveChangedEvent(); 
+                } else { return; }
+            }
+        }
+
+        public int MaxManaPoints { 
+            get => _maxManaPoints; 
+            set {
+                if(value < Stats.MAX_NUMBER_ALLOWABLE && value != _maxManaPoints) { 
+                    _maxManaPoints = value;
+                    if(entityStatsHaveChangedEvent != null) entityStatsHaveChangedEvent(); 
+                } else { return; }
+            } 
+        }
+
         public int CurrentExperience { get => _currentExperience; set => _currentExperience = value; }
         public AnimationCurve ExperienceCurve { get => _experienceCurve; set => _experienceCurve = value; }
         public int AttackPoints { get => _attackPoints; set => _attackPoints = value; }
@@ -35,13 +82,13 @@ namespace h1ddengames.twodrpg.statistics
         
         private void OnEnable() {
             Stats.statsHaveChangedEvent += OnStatsChanged;
-            ResetStatsToZero();
             CalculateStats();
+            CurrentHealthPoints = MaxHealthPoints;
+            CurrentManaPoints = MaxManaPoints;
         }
 
         public void OnStatsChanged() {
-            // When calculating stats, we must first set them to zero so we can't the same stat source twice.
-            ResetStatsToZero();
+            // When calculating stats, we must first set them to zero so we can't add the same stat source twice.
             CalculateStats();
         }
 
@@ -59,6 +106,8 @@ namespace h1ddengames.twodrpg.statistics
             // Unless the player levels up, no stat changes should change the current hp/mp.
             var _unchangedHealth = CurrentHealthPoints;
             var _unchangedMana = CurrentManaPoints; 
+
+            ResetStatsToZero();
 
             // Iterate through all the stats while adding and subtracting where detailed.
             foreach (var item in ListOfStats)
@@ -103,12 +152,37 @@ namespace h1ddengames.twodrpg.statistics
             Luck = 0;
         }
 
-        #region Helper Classes
-        [System.Serializable]
-        public class StringStatsDictionary : SerializableDictionaryBase<string, Stats> { }
+        [ContextMenu("UpdateList")]
+        public void UpdateList() {
+            foreach (var item in ListOfStatsSO)
+            {
+                ListOfStats.Add(item.GetSetStats);
+            }
 
-        [System.Serializable]
-        public class StatsList : ReorderableArray<Stats> { }
+            ListOfStatsSO.Clear();
+            ResetStatsToZero();
+            CalculateStats();
+        }
+
+        public void ChangeHP(int amt) {
+            CurrentHealthPoints += amt;
+        }
+
+        public void ChangeMP(int amt) {
+            CurrentManaPoints += amt;
+        }
+
+        public void AddNewStats() {
+            ListOfStats.Add(new Stats(StatEffectors.ItemStats, Random.Range(5, 10), Random.Range(5, 10), 
+            Random.Range(5, 10), Random.Range(5, 10), Random.Range(5, 10), Random.Range(5, 10), Random.Range(5, 10), 
+            Random.Range(5, 10), Random.Range(0, 10)));
+            CalculateStats();
+        }
+
+        #region Helper Classes
+        [System.Serializable] public class StringStatsDictionary : SerializableDictionaryBase<string, Stats> { }
+        [System.Serializable] public class StatsList : ReorderableArray<Stats> { }
+        [System.Serializable] public class StatsListSO : ReorderableArray<StatsSO> { }
         #endregion
 
         #region Unused - Remove later

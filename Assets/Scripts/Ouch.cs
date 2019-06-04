@@ -3,9 +3,11 @@
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
+    using h1ddengames.twodrpg.statistics;
     public class Ouch : MonoBehaviour
     {
-        [SerializeField] private float invincibilityTime = 2f;
+        [SerializeField] private float invincibilityTime = 1f;
+        [SerializeField] private int giveDamageAmount = 2;
         [SerializeField] private BoxCollider2D boxCollider;
          
 
@@ -32,12 +34,19 @@
             if(other.gameObject.tag.Equals("Player")) {
                 // Immediately set to false or the player can get a huge jump boost from landing on the collider.
                 // Even if the collider is set to IsTrigger.
+                if(boxCollider.enabled == true) {
+                    //Debug.Log("DOING DMG: " + giveDamageAmount );
+                    other.GetComponent<EntityStats>().CurrentHealthPoints -= giveDamageAmount;
+                }
+
                 boxCollider.enabled = false;
 
                 var animator = other.GetComponent<Animator>();
                 animator.SetBool("IsHurt", true);
+
                 var clipInfo = animator.GetCurrentAnimatorClipInfo(0);
-                // 0.8f is about the time it takes to play the item_feedback animation.
+
+                // 0.8f is about the time that most game's invincibility lasts.
                 if(clipInfo[0].clip.length > 0.8f) {
                     StartCoroutine(WaitThenFinishAnimation(animator, 0.8f));
                 } else {

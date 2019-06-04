@@ -1,16 +1,18 @@
-namespace h1ddengames.twodrpg.statistics
+﻿namespace h1ddengames.twodrpg.statistics
 {
     using System;
     using UnityEngine;
        
-    //[CreateAssetMenu(fileName = "Stats", menuName = "2DRPG/Stats", order = 0)]
     [Serializable]
     public class Stats {
         #region Variables
+        // Due to the constraints of having presentable UI, this number is the hard limit until UI can be updated.
+        // In other words, if there are too many numbers, the text will overflow on the UI and that looks terrible.
+        public const int MAX_NUMBER_ALLOWABLE = 9999999;
         public delegate void StatDelegate();
         public static event StatDelegate statsHaveChangedEvent;
 
-        [SerializeField, Tooltip("What is causing this stat change")] private string _effector;
+        [SerializeField, Tooltip("What is the source of these stats")] private StatEffectors _effector;
         [SerializeField] private int _strength, _intelligence, _dexterity, _luck;
         [SerializeField] private int _healthPoints, _manaPoints;
         [SerializeField] private int _attackPoints, _magicAttackPoints;
@@ -18,11 +20,11 @@ namespace h1ddengames.twodrpg.statistics
         #endregion
 
         #region Getters and Setters
-        public string Effector { get => _effector; set => _effector = value; }
+        public StatEffectors Effector { get => _effector; set => _effector = value; }
         public int Strength { 
             get => _strength; 
             set {
-                if(value != _strength) { 
+                if(value < MAX_NUMBER_ALLOWABLE && value != _strength) { 
                     _strength = value;
                     if(statsHaveChangedEvent != null) statsHaveChangedEvent(); 
                 } else { return; }
@@ -32,7 +34,7 @@ namespace h1ddengames.twodrpg.statistics
         public int Intelligence { 
             get => _intelligence; 
             set {
-                if(value != _intelligence) {
+                if(value < MAX_NUMBER_ALLOWABLE && value != _intelligence) {
                     _intelligence = value;
                     if(statsHaveChangedEvent != null) statsHaveChangedEvent();
                 } else { return; }  
@@ -42,7 +44,7 @@ namespace h1ddengames.twodrpg.statistics
         public int Dexterity { 
             get => _dexterity; 
             set {
-                if(value != _dexterity) {
+                if(value < MAX_NUMBER_ALLOWABLE && value != _dexterity) {
                     _dexterity = value;
                     if(statsHaveChangedEvent != null) statsHaveChangedEvent();
                 } else { return; }  
@@ -52,7 +54,7 @@ namespace h1ddengames.twodrpg.statistics
         public int Luck { 
             get => _luck; 
             set {
-                if(value != _luck) {
+                if(value < MAX_NUMBER_ALLOWABLE && value != _luck) {
                     _luck = value;
                     if(statsHaveChangedEvent != null) statsHaveChangedEvent();
                 } else { return; }  
@@ -62,7 +64,7 @@ namespace h1ddengames.twodrpg.statistics
         public int HealthPoints { 
             get => _healthPoints; 
             set {
-                if(value != _healthPoints) {
+                if(value < MAX_NUMBER_ALLOWABLE && value != _healthPoints) {
                     _healthPoints = value;
                     if(statsHaveChangedEvent != null) statsHaveChangedEvent();
                 } else { return; }  
@@ -72,7 +74,7 @@ namespace h1ddengames.twodrpg.statistics
         public int ManaPoints { 
             get => _manaPoints; 
             set {
-                if(value != _manaPoints) {
+                if(value < MAX_NUMBER_ALLOWABLE && value != _manaPoints) {
                     _manaPoints = value;
                     if(statsHaveChangedEvent != null) statsHaveChangedEvent();
                 } else { return; }  
@@ -82,7 +84,7 @@ namespace h1ddengames.twodrpg.statistics
         public int AttackPoints { 
             get => _attackPoints; 
             set {
-                if(value != _attackPoints) {
+                if(value < MAX_NUMBER_ALLOWABLE && value != _attackPoints) {
                     _attackPoints = value;
                     if(statsHaveChangedEvent != null) statsHaveChangedEvent();
                 } else { return; }  
@@ -92,7 +94,7 @@ namespace h1ddengames.twodrpg.statistics
         public int MagicAttackPoints { 
             get => _magicAttackPoints; 
             set {
-                if(value != _magicAttackPoints) {
+                if(value < MAX_NUMBER_ALLOWABLE && value != _magicAttackPoints) {
                     _magicAttackPoints = value;
                     if(statsHaveChangedEvent != null) statsHaveChangedEvent();
                 } else { return; }  
@@ -102,7 +104,7 @@ namespace h1ddengames.twodrpg.statistics
         public int Experience { 
             get => _experience; 
             set {
-                if(value != _experience) {
+                if(value < MAX_NUMBER_ALLOWABLE && value != _experience) {
                     _experience = value;
                     if(statsHaveChangedEvent != null) statsHaveChangedEvent();
                 } else { return; }  
@@ -110,8 +112,9 @@ namespace h1ddengames.twodrpg.statistics
         }
         #endregion
 
-        #region Constructors and Methods
+        #region Constructors
         public Stats() {
+            Effector = StatEffectors.BaseStats;
             Strength = 0;
             Intelligence = 0;
             Dexterity = 0;
@@ -123,7 +126,8 @@ namespace h1ddengames.twodrpg.statistics
             Experience = 0;
         }
 
-        public Stats(int str, int intel, int dex, int luk, int hp, int mp, int atk, int matk, int exp) {
+        public Stats(StatEffectors eff, int str, int intel, int dex, int luk, int hp, int mp, int atk, int matk, int exp) {
+            Effector = eff;
             Strength = str;
             Intelligence = intel;
             Dexterity = dex;
@@ -136,4 +140,12 @@ namespace h1ddengames.twodrpg.statistics
         }
         #endregion
     }
+
+    public enum StatEffectors {
+            BaseStats,
+            ItemStats,
+            EquipmentStats,
+            SkillStats,
+            QuestStats
+        }
 }
