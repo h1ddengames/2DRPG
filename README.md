@@ -1,47 +1,43 @@
 # 2DRPG
-## Table of Contents
-<!-- vscode-markdown-toc -->
-- [2DRPG](#2drpg)
-  - [Table of Contents](#table-of-contents)
-  - [1. <a name='About'></a>About](#1-a-nameaboutaabout)
-  - [2. <a name='Scope'></a>Scope](#2-a-namescopeascope)
-  - [3. <a name='How-to'></a>How-to](#3-a-namehow-toahow-to)
-    - [3.1. <a name='UsingaTilesettoCreatetheEnvironment'></a>Using a Tileset to Create the Environment](#31-a-nameusingatilesettocreatetheenvironmentausing-a-tileset-to-create-the-environment)
-    - [3.2. <a name='ChangingTilemapColliders'></a>Changing Tilemap Colliders](#32-a-namechangingtilemapcollidersachanging-tilemap-colliders)
-    - [3.3. <a name='CreatingthePlayerMovement'></a>Creating the Player Movement](#33-a-namecreatingtheplayermovementacreating-the-player-movement)
-    - [3.4. <a name='CreatingtheStatSystem'></a>Creating the Stat System](#34-a-namecreatingthestatsystemacreating-the-stat-system)
-    - [3.5. <a name='CreatingtheItemSystem'></a>Creating the Item System](#35-a-namecreatingtheitemsystemacreating-the-item-system)
-    - [3.6. <a name='SettingupItemsforPickup'></a>Setting up Items for Pickup](#36-a-namesettingupitemsforpickupasetting-up-items-for-pickup)
-    - [3.7. <a name='TypesofAnimations'></a>Types of Animations](#37-a-nametypesofanimationsatypes-of-animations)
-    - [3.8. <a name='CreatingAnimationsforMovementBasedAnimations'></a>Creating Animations for Movement Based Animations](#38-a-namecreatinganimationsformovementbasedanimationsacreating-animations-for-movement-based-animations)
-  - [4. <a name='FrequentlyAskedQuestionsFAQ'></a>Frequently Asked Questions (FAQ)](#4-a-namefrequentlyaskedquestionsfaqafrequently-asked-questions-faq)
-      - [4.1. <a name='Question1:HowdoIstopmycharacterfromslidingdownslopes'></a>Question #1: How do I stop my character from sliding down slopes?](#41-a-namequestion1howdoistopmycharacterfromslidingdownslopesaquestion-1-how-do-i-stop-my-character-from-sliding-down-slopes)
-      - [4.2. <a name='Question2:HowdoIsetupapixelperfectcamera'></a>Question #2: How do I setup a pixel perfect camera?](#42-a-namequestion2howdoisetupapixelperfectcameraaquestion-2-how-do-i-setup-a-pixel-perfect-camera)
-      - [4.3. <a name='Question3:HowdoIsmoothlycamerafollowacharacter'></a>Question #3: How do I smoothly camera follow a character?](#43-a-namequestion3howdoismoothlycamerafollowacharacteraquestion-3-how-do-i-smoothly-camera-follow-a-character)
-      - [4.4. <a name='Question4:HowdoImakethecharacterkeepjumpingwhenholdingdownthejumpbuttonratherthantapit'></a>Question #4: How do I make the character keep jumping when holding down the jump button rather than tap it?](#44-a-namequestion4howdoimakethecharacterkeepjumpingwhenholdingdownthejumpbuttonratherthantapitaquestion-4-how-do-i-make-the-character-keep-jumping-when-holding-down-the-jump-button-rather-than-tap-it)
-      - [4.5. <a name='Question5:HowdoIfixaframeofanimationdisappearing'></a>Question #5: How do I fix a frame of animation disappearing?](#45-a-namequestion5howdoifixaframeofanimationdisappearingaquestion-5-how-do-i-fix-a-frame-of-animation-disappearing)
-      - [4.6. <a name='Question6:HowdoIcreateaUIthatscaleswithresolution'></a>Question #6: How do I create a UI that scales with resolution?](#46-a-namequestion6howdoicreateauithatscaleswithresolutionaquestion-6-how-do-i-create-a-ui-that-scales-with-resolution)
-      - [4.7. <a name='Question7:Whydoesmytilenotfitmygrid'></a>Question #7: Why does my tile not fit my grid?](#47-a-namequestion7whydoesmytilenotfitmygridaquestion-7-why-does-my-tile-not-fit-my-grid)
-      - [4.8. <a name='Question8:HowdoIchangethesamplesnumberforananimation'></a>Question #8: How do I change the samples number for an animation?](#48-a-namequestion8howdoichangethesamplesnumberforananimationaquestion-8-how-do-i-change-the-samples-number-for-an-animation)
-      - [4.9. <a name='Question9:HowdoIknowwhenavariablehaschanged'></a>Question #9: How do I know when a variable has changed?](#49-a-namequestion9howdoiknowwhenavariablehaschangedaquestion-9-how-do-i-know-when-a-variable-has-changed)
-      - [4.10. <a name='Question10:HowdoIuseadelegateandorevent'></a>Question #10: How do I use a delegate and/or event?](#410-a-namequestion10howdoiuseadelegateandoreventaquestion-10-how-do-i-use-a-delegate-andor-event)
-      - [4.11. <a name='Question11:Question'></a>Question #11: Question](#411-a-namequestion11questionaquestion-11-question)
-      - [4.12. <a name='Question12:Question'></a>Question #12: Question](#412-a-namequestion12questionaquestion-12-question)
-      - [4.13. <a name='Question13:Question'></a>Question #13: Question](#413-a-namequestion13questionaquestion-13-question)
-      - [4.14. <a name='Question14:Question'></a>Question #14: Question](#414-a-namequestion14questionaquestion-14-question)
-      - [4.15. <a name='Question15:Question'></a>Question #15: Question](#415-a-namequestion15questionaquestion-15-question)
-
-<!-- vscode-markdown-toc-config
-	numbering=true
-	autoSave=true
-	/vscode-markdown-toc-config -->
-<!-- /vscode-markdown-toc -->
-##  1. <a name='About'></a>About
+## About
 Creation of an aRPG (Action-Adventure Role Playing Game) using Unity 2D 2019.1.0f2 -- Will switch to 2019.x.xfx when it comes out.
 
 Note: 2019.1.0f2 has a bug with the palette editor so I have changed the project version to 2019.2.0a2
 
-##  2. <a name='Scope'></a>Scope
+#
+## Table of Contents
+- [2DRPG](#2drpg)
+  - [About](#about)
+  - [Table of Contents](#table-of-contents)
+  - [Scope](#scope)
+  - [How-to](#how-to)
+    - [Using a Tileset to Create the Environment](#using-a-tileset-to-create-the-environment)
+    - [Changing Tilemap Colliders](#changing-tilemap-colliders)
+    - [Creating the Player Movement](#creating-the-player-movement)
+    - [Creating the Stat System](#creating-the-stat-system)
+    - [Creating the Item System](#creating-the-item-system)
+    - [Setting up Items for Pickup](#setting-up-items-for-pickup)
+    - [Types of Animations](#types-of-animations)
+    - [Creating Animations for Movement Based Animations](#creating-animations-for-movement-based-animations)
+  - [Frequently Asked Questions (FAQ)](#frequently-asked-questions-faq)
+      - [Question #1: How do I stop my character from sliding down slopes?](#question-1-how-do-i-stop-my-character-from-sliding-down-slopes)
+      - [Question #2: How do I setup a pixel perfect camera?](#question-2-how-do-i-setup-a-pixel-perfect-camera)
+      - [Question #3: How do I smoothly camera follow a character?](#question-3-how-do-i-smoothly-camera-follow-a-character)
+      - [Question #4: How do I make the character keep jumping when holding down the jump button rather than tap it?](#question-4-how-do-i-make-the-character-keep-jumping-when-holding-down-the-jump-button-rather-than-tap-it)
+      - [Question #5: How do I fix a frame of animation disappearing?](#question-5-how-do-i-fix-a-frame-of-animation-disappearing)
+      - [Question #6: How do I create a UI that scales with resolution?](#question-6-how-do-i-create-a-ui-that-scales-with-resolution)
+      - [Question #7: Why does my tile not fit my grid?](#question-7-why-does-my-tile-not-fit-my-grid)
+      - [Question #8: How do I change the samples number for an animation?](#question-8-how-do-i-change-the-samples-number-for-an-animation)
+      - [Question #9: How do I know when a variable has changed?](#question-9-how-do-i-know-when-a-variable-has-changed)
+      - [Question #10: How do I use a delegate and/or event?](#question-10-how-do-i-use-a-delegate-andor-event)
+      - [Question #11: Question](#question-11-question)
+      - [Question #12: Question](#question-12-question)
+      - [Question #13: Question](#question-13-question)
+      - [Question #14: Question](#question-14-question)
+      - [Question #15: Question](#question-15-question)
+
+#
+## Scope
 This is a list of things that I would like to have in my game for now.
 - ~~Player movement~~
     - ~~Satisfying feel~~
@@ -82,8 +78,8 @@ This is a list of things that I would like to have in my game for now.
     - Copper
 
 #
-##  3. <a name='How-to'></a>How-to
-###  3.1. <a name='UsingaTilesettoCreatetheEnvironment'></a>Using a Tileset to Create the Environment
+## How-to
+### Using a Tileset to Create the Environment
 1. In order to use a Tileset, first either create one or find one online. 
 2. Once you've made/found one: in Unity, click on Windows > 2D > Tile Palette.
 3. Click on Create New Palette. Save this palette into it's own folder ie. Assets > Palettes > yournewpallete
@@ -101,7 +97,7 @@ This is a list of things that I would like to have in my game for now.
 15. In Rigidbody 2D make sure the ```Body Type``` is set to Static.
 
 #
-###  3.2. <a name='ChangingTilemapColliders'></a>Changing Tilemap Colliders
+### Changing Tilemap Colliders
 When adding a collider to a tilemap, it will automatically generate the shape of the collider. If this shape doesn't fit the movement of the game (causes issues with crouching or jumping past an area) then you'll need to adjust the shape of the collider's boundries.
 
 In order to change the shape of the collider's boudries:
@@ -115,7 +111,7 @@ In order to change the shape of the collider's boudries:
 7. Repeat steps 5-7 until you've changed the colliders for all the tiles that were not auto generated properly. 
 
 #
-###  3.3. <a name='CreatingthePlayerMovement'></a>Creating the Player Movement
+### Creating the Player Movement
 Unity's Character Controller 2D script was used. 
 
 In order to set it up and use it:
@@ -133,16 +129,16 @@ In order to set it up and use it:
 12. Create the logic for moving your player in the PlayerMovement script.
 
 #
-###  3.4. <a name='CreatingtheStatSystem'></a>Creating the Stat System
+### Creating the Stat System
 
 
 
 #
-###  3.5. <a name='CreatingtheItemSystem'></a>Creating the Item System
+### Creating the Item System
 
 
 #
-###  3.6. <a name='SettingupItemsforPickup'></a>Setting up Items for Pickup
+### Setting up Items for Pickup
 1. In the item animator, drag and drop in the Item_Feedback animation clip.
 2. Create an IsCollected boolean.
 3. Create a transition from Any State to Item_Feedback and set IsCollected = true.
@@ -153,7 +149,7 @@ In order to set it up and use it:
 8. Item's idle -> Item_Feedback MUST have Exit Time disabled.
 
 #
-###  3.7. <a name='TypesofAnimations'></a>Types of Animations
+### Types of Animations
 1. Sprite Based:
    - This type of animation involves using a different spite in each frame of an animation.
    - Really simple to animate, just put a new sprite on each new frame where you want the sprite to change.
@@ -163,7 +159,7 @@ In order to set it up and use it:
    - IMPORTANT NOTE: YOU CANNOT USE THE SAME ITEM_FEEDBACK ANIMATION WITH THIS TYPE OF ANIMATION AS YOU DO WITH SPRITE BASED. YOU MUST CREATE A NEW ANIMATION FOR IT.
 
 #
-###  3.8. <a name='CreatingAnimationsforMovementBasedAnimations'></a>Creating Animations for Movement Based Animations
+### Creating Animations for Movement Based Animations
 Note: The first child should always be named GFX or something similar and must always be named the same for this type of animation.
 1. You MUST have a Box Collider2D on the parent gameobject (Empty GameObject) If it is on a child gameobject then even with isTrigger enabled, the character will still interact physically with it.
 2. In the Animation tab, add the BoxCollider2D offset and size properties from the parent gameobject.
@@ -177,9 +173,9 @@ Note: The first child should always be named GFX or something similar and must a
 
 
 #
-##  4. <a name='FrequentlyAskedQuestionsFAQ'></a>Frequently Asked Questions (FAQ)
+## Frequently Asked Questions (FAQ)
 
-####  4.1. <a name='Question1:HowdoIstopmycharacterfromslidingdownslopes'></a>Question #1: How do I stop my character from sliding down slopes?
+#### Question #1: How do I stop my character from sliding down slopes?
 - #### Answer:
     - ##### This is the cause of the issue:
       1. Physics will take place on every frame so in order to stop Physics from moving the character, the character's position must be frozen when no input is detected.
@@ -196,7 +192,7 @@ Note: The first child should always be named GFX or something similar and must a
           rb.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
           ```
 
-####  4.2. <a name='Question2:HowdoIsetupapixelperfectcamera'></a>Question #2: How do I setup a pixel perfect camera?
+#### Question #2: How do I setup a pixel perfect camera?
 - #### Answer:
     - ##### This is how:
       1. On the Main Camera in the scene, click Add Component.
@@ -204,7 +200,7 @@ Note: The first child should always be named GFX or something similar and must a
       3. Change the reference resolution until the camera preview shows as much of the area that you want for the game.
       4. Turn off Run in Edit Mode when finished with the edits.
 
-####  4.3. <a name='Question3:HowdoIsmoothlycamerafollowacharacter'></a>Question #3: How do I smoothly camera follow a character?
+#### Question #3: How do I smoothly camera follow a character?
 - #### Answer:
     - ##### This is the cause of the issue:
       1. The camera is moving at a rate that is different from the PPU (Pixels Per Unit) of your 2D art assets. 
@@ -212,7 +208,7 @@ Note: The first child should always be named GFX or something similar and must a
     - ##### This is how to fix the issue:
       1. Haven't figured it out yet.
 
-####  4.4. <a name='Question4:HowdoImakethecharacterkeepjumpingwhenholdingdownthejumpbuttonratherthantapit'></a>Question #4: How do I make the character keep jumping when holding down the jump button rather than tap it?
+#### Question #4: How do I make the character keep jumping when holding down the jump button rather than tap it?
 - #### Answer:
     - ##### This is how:
       1. We want to allow the player to jump on the first available frame while they are still holding down the button. In order to do that, we will keep the character in a jumping state until we get the input that the player has let go of the jump button.
@@ -227,7 +223,7 @@ Note: The first child should always be named GFX or something similar and must a
             ```
       2. By doing it this way, we have to drop the jumpForce of the character down, otherwise it's almost as if the character is able to double or triple jump.
 
-####  4.5. <a name='Question5:HowdoIfixaframeofanimationdisappearing'></a>Question #5: How do I fix a frame of animation disappearing?
+#### Question #5: How do I fix a frame of animation disappearing?
 - #### Answer:
     - ##### This is the cause of the issue:
       1. The sorting order of your sprites. Most likely your background and your current sprite is on the same sorting layer so it's fighting for control.  
@@ -235,7 +231,7 @@ Note: The first child should always be named GFX or something similar and must a
     - ##### This is how to fix the issue:
       1. Change the sorting layer of forground objects to be higher than that of mid or background objects.
 
-####  4.6. <a name='Question6:HowdoIcreateaUIthatscaleswithresolution'></a>Question #6: How do I create a UI that scales with resolution?
+#### Question #6: How do I create a UI that scales with resolution?
 - #### Answer:
     - ##### This is how:
       1. Create a Canvas and make sure there is an EventSystem in the scene.
@@ -243,21 +239,21 @@ Note: The first child should always be named GFX or something similar and must a
       3. Whenever you make any UI element on the Canvas, make sure that you "dock" the UI element to a location on the screen.
       4. Test that everything scales properly by going to your Gamme tab, then changing the resolution.
 
-####  4.7. <a name='Question7:Whydoesmytilenotfitmygrid'></a>Question #7: Why does my tile not fit my grid?
+#### Question #7: Why does my tile not fit my grid?
 - #### Answer
     - ##### These are possible causes:
       1. You are using assets that were made for a different resolution (16x16 vs 32x32 etc)
     - ##### This is how to fix the issue:
       1. Drag and drop the sprite onto the Scene and move it to where you like it. The benefit of doing it this way is that you can hide the edges of the sprite behind your tilemap.
 
-####  4.8. <a name='Question8:HowdoIchangethesamplesnumberforananimation'></a>Question #8: How do I change the samples number for an animation?
+#### Question #8: How do I change the samples number for an animation?
 - #### Answer
     - ##### This is how:
         1. Open up your Animation tab.
         2. Click on the Cog icon on the far top right, just past the number line.
         3. Enable ```Show Sample Rate```
 
-####  4.9. <a name='Question9:HowdoIknowwhenavariablehaschanged'></a>Question #9: How do I know when a variable has changed?
+#### Question #9: How do I know when a variable has changed?
 - #### Answer:
     - ##### This is how:
         ```
@@ -291,7 +287,7 @@ Note: The first child should always be named GFX or something similar and must a
         }
         ```
 
-####  4.10. <a name='Question10:HowdoIuseadelegateandorevent'></a>Question #10: How do I use a delegate and/or event?
+#### Question #10: How do I use a delegate and/or event?
 - #### Answer:
     - ##### This is how to fix the issue:
         ```
@@ -321,31 +317,31 @@ Note: The first child should always be named GFX or something similar and must a
         }
         ```
 
-####  4.11. <a name='Question11:Question'></a>Question #11: Question
+#### Question #11: Question
 - #### Answer:
     - ##### This is the cause of the issue:
 
     - ##### This is how to fix the issue:
 
-####  4.12. <a name='Question12:Question'></a>Question #12: Question
+#### Question #12: Question
 - #### Answer:
     - ##### This is the cause of the issue:
 
     - ##### This is how to fix the issue:
 
-####  4.13. <a name='Question13:Question'></a>Question #13: Question
+#### Question #13: Question
 - #### Answer:
     - ##### This is the cause of the issue:
 
     - ##### This is how to fix the issue:
 
-####  4.14. <a name='Question14:Question'></a>Question #14: Question
+#### Question #14: Question
 - #### Answer:
     - ##### This is the cause of the issue:
 
     - ##### This is how to fix the issue:
 
-####  4.15. <a name='Question15:Question'></a>Question #15: Question
+#### Question #15: Question
 - #### Answer:
     - ##### This is the cause of the issue:
 
