@@ -8193,6 +8193,26 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8633496819023174262, guid: 9bd78eb4fdde88f4c877768cd627cef0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1565451752438377323, guid: 9bd78eb4fdde88f4c877768cd627cef0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1565451752770843545, guid: 9bd78eb4fdde88f4c877768cd627cef0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1565451753978006102, guid: 9bd78eb4fdde88f4c877768cd627cef0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bd78eb4fdde88f4c877768cd627cef0, type: 3}
 --- !u!224 &1030207620 stripped
@@ -24902,7 +24922,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1929635531
 MonoBehaviour:
   m_ObjectHideFlags: 0
