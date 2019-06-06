@@ -13133,6 +13133,11 @@ PrefabInstance:
       propertyPath: _valueText
       value: 50/50
       objectReference: {fileID: 0}
+    - target: {fileID: 2845644034911162785, guid: 71dd6383482740340a206f5bb119c7b3,
+        type: 3}
+      propertyPath: _fillAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8965240273706523095, guid: 71dd6383482740340a206f5bb119c7b3,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -15259,6 +15264,11 @@ PrefabInstance:
       propertyPath: _valueText
       value: 50/50
       objectReference: {fileID: 0}
+    - target: {fileID: 2845644034911162785, guid: 71dd6383482740340a206f5bb119c7b3,
+        type: 3}
+      propertyPath: _fillAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8965240273706523095, guid: 71dd6383482740340a206f5bb119c7b3,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -15392,6 +15402,21 @@ PrefabInstance:
     - target: {fileID: 2860449631811533821, guid: 71dd6383482740340a206f5bb119c7b3,
         type: 3}
       propertyPath: m_Pivot.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2860449630171295179, guid: 71dd6383482740340a206f5bb119c7b3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2860449630205901723, guid: 71dd6383482740340a206f5bb119c7b3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2860449631061804720, guid: 71dd6383482740340a206f5bb119c7b3,
+        type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -24877,7 +24902,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1929635531
 MonoBehaviour:
   m_ObjectHideFlags: 0
